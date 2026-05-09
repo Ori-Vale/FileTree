@@ -1,0 +1,27 @@
+/* 应用菜单 */
+"About APP_NAME" = "关于 APP_NAME";
+"Preferences…" = "偏好设置…";
+"Services" = "服务";
+"Hide APP_NAME" = "隐藏 APP_NAME";
+"Hide Others" = "隐藏其他";
+"Show All" = "全部显示";
+"Quit APP_NAME" = "退出 APP_NAME";
+
+/* 编辑菜单 */
+"Edit" = "编辑";
+"Undo" = "还原";
+"Redo" = "重做";
+"Cut" = "剪切";
+"Copy" = "拷贝";
+"Paste" = "粘贴";
+"Paste and Match Style" = "粘贴并匹配样式";
+"Delete" = "删除";
+"Select All" = "全选";
+"Find" = "查找";
+"Find…" = "查找…";
+"Find and Replace…" = "查找和替换…";
+"Find Next" = "查找下一个";
+"Find Previous" = "查找上一个";
+"Use Selection for Find" = "使用所选内容查找";
+"Jump to Selection" = "跳到选中部分";
+"Spelling and Grammar" = "拼写和语法";

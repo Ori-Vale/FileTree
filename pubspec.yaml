@@ -1,0 +1,32 @@
+name: filetree
+
+description: |
+  一款免费、开源的轻量化文件树生成工具。
+    
+publish_to: 'none'                    # 禁止发布到 pub.dev
+version: 1.0.1                        # 版本号
+
+environment:                          # Dart SDK 环境配置
+  sdk: ">=3.0.0 <4.0.0"               # Dart SDK 版本要求
+
+dependencies:                         # 项目依赖列表
+  flutter:                            # Flutter SDK 的核心依赖，提供了构建 UI 和访问平台功能的基础库
+    sdk: flutter
+  provider: ^6.1.0                    # 状态管理：使用 Provider 实现响应式 UI 更新
+  path_provider: ^2.1.0               # 路径工具：获取系统 Downloads 目录等
+  file_selector: ^1.0.0               # 文件选择器：让用户选择扫描目录和输出目录（macOS 原生选择器）
+  cupertino_icons: ^1.0.8             # Cupertino 图标库（用于 macOS 原生风格图标）
+  package_info_plus: ^10.1.0
+  url_launcher: ^6.3.2
+  flutter_svg: ^2.2.4
+
+dev_dependencies:                     # 开发环境依赖（测试、代码规范检查等）
+  flutter_test:                       # Flutter 单元测试框架
+    sdk: flutter
+  flutter_lints: ^6.0.0               # 官方推荐的 Dart/Flutter 代码规范检查工具
+
+flutter:                              # Flutter 特定配置
+  uses-material-design: true          # 使用 Material Design 图标系统
+
+  assets:
+    - assets/github.svg
