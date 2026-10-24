@@ -11,6 +11,11 @@
 
 # 下方一行代码启用了针对 Flutter 应用、软件包（packages）及插件的一组推荐规范规则，
 # 旨在鼓励开发者遵循良好的编码实践
+analyzer:
+  exclude:
+    - build/**
+    - windows/**
+    - macos/**
 include: package:flutter_lints/flutter.yaml
 
 # ---------------------------------------------------------------------------

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-/// 家族化统一视觉系统
+/// 统一视觉系统
 ///
 /// 集中管理颜色、常量和所有视觉组件，保持跨应用的一致性
-class OriValeVisual {
+class AppVisual {
   // ---------------------------------------------------------------------------
-  // 颜色系统（macOS Sequoia 风格）
+  // 颜色系统（macOS 风格）
   // ---------------------------------------------------------------------------
 
   static const Color kBg = Color(0xFFF6F6F8);
@@ -25,7 +25,7 @@ class OriValeVisual {
   // 空间尺度
   // ---------------------------------------------------------------------------
 
-  static const double kTahoeRadius = 12.0;
+  static const double kControlRadius = 12.0;
   static const double kCardRadius = 16.0;
 
   // ---------------------------------------------------------------------------
@@ -106,13 +106,13 @@ class OriValeVisual {
     bool isLoading = false,
     bool isEnabled = true,
   }) {
-    return OriValeClickable(
+    return ScaleOnTap(
       onTap: onPressed,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
           color: isEnabled ? kAccent : kTertiaryLabel,
-          borderRadius: BorderRadius.circular(kTahoeRadius),
+          borderRadius: BorderRadius.circular(kControlRadius),
           boxShadow: isEnabled ? const [kElevatedShadow] : [],
         ),
         child: Center(
@@ -148,13 +148,13 @@ class OriValeVisual {
     required IconData icon,
     VoidCallback? onPressed,
   }) {
-    return OriValeClickable(
+    return ScaleOnTap(
       onTap: onPressed,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
           color: kDivider.withValues(alpha: 0.5),
-          borderRadius: BorderRadius.circular(kTahoeRadius),
+          borderRadius: BorderRadius.circular(kControlRadius),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -180,13 +180,13 @@ class OriValeVisual {
     required bool isSelected,
     required Function(dynamic) onChanged,
   }) {
-    return OriValeClickable(
+    return ScaleOnTap(
       onTap: () => onChanged(null),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected ? kAccent : kSurfaceAlt,
-          borderRadius: BorderRadius.circular(kTahoeRadius),
+          borderRadius: BorderRadius.circular(kControlRadius),
           border: isSelected ? null : Border.all(color: kDivider, width: 1),
         ),
         child: Row(
@@ -254,8 +254,10 @@ class OriValeVisual {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-          color: isError ? kRed.withValues(alpha: 0.9) : kAccent.withValues(alpha: 0.9),
-        borderRadius: BorderRadius.circular(kTahoeRadius),
+        color: isError
+            ? kRed.withValues(alpha: 0.9)
+            : kAccent.withValues(alpha: 0.9),
+        borderRadius: BorderRadius.circular(kControlRadius),
         boxShadow: const [kElevatedShadow],
       ),
       child: Row(
@@ -294,24 +296,24 @@ class OriValeVisual {
   }
 }
 
-/// 家族化可点击组件
+/// 按压时缩放的可点击组件
 ///
 /// 支持按压时的缩放动画，提供触觉反馈
-class OriValeClickable extends StatefulWidget {
+class ScaleOnTap extends StatefulWidget {
   final Widget child;
   final VoidCallback? onTap;
 
-  const OriValeClickable({
+  const ScaleOnTap({
     super.key,
     required this.child,
     this.onTap,
   });
 
   @override
-  State<OriValeClickable> createState() => _OriValeClickableState();
+  State<ScaleOnTap> createState() => _ScaleOnTapState();
 }
 
-class _OriValeClickableState extends State<OriValeClickable> {
+class _ScaleOnTapState extends State<ScaleOnTap> {
   bool _isPressed = false;
 
   @override
@@ -322,8 +324,8 @@ class _OriValeClickableState extends State<OriValeClickable> {
       onTapCancel: () => setState(() => _isPressed = false),
       onTap: widget.onTap,
       child: AnimatedScale(
-        scale: _isPressed ? OriValeVisual.kTouchScale : 1.0,
-        duration: OriValeVisual.kTouchDuration,
+        scale: _isPressed ? AppVisual.kTouchScale : 1.0,
+        duration: AppVisual.kTouchDuration,
         curve: Curves.easeOutCubic,
         child: widget.child,
       ),

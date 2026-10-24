@@ -4,6 +4,15 @@ class AppStrings {
   static const String appTitle = "FileTree";
   static const String aboutLabel = "关于";
 
+  // 关于页面
+  static const String aboutDescription = "一款轻量化文件树生成工具。\n\n"
+      "支持平台:\n"
+      "  • Windows x86_64\n"
+      "  • macOS 通用二进制 (Apple Silicon | Intel)";
+  static const String versionLabel = "版本:";
+  static const String projectHomeLabel = "项目主页";
+  static const String closeButton = "关 闭";
+
   // 路径&输出格式选择区
   static const String selectDirectoryTitle = "需要生成文件树的路径：";
   static const String selectDirButton = "选择";
@@ -45,7 +54,8 @@ class AppStrings {
   // 统计区（包含 {count} 占位符）
   static const String statFolders = "{count} 个文件夹";
   static const String statFiles = "{count} 个文件";
-  static const String statUnknown = "--";
+  static const String statUnknownFolders = "-- 个文件夹";
+  static const String statUnknownFiles = "-- 个文件";
 
   // 生成器输出
   static const String sourcePath = "根目录";

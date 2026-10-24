@@ -4,7 +4,7 @@ import '../common/app_strings.dart';
 
 /// HTML 格式生成器
 ///
-/// 生成带折叠功能的树形结构 HTML 页面，采用 Ori Vale 家族化视觉风格
+/// 生成带折叠功能的树形结构 HTML 页面，使用与应用一致的视觉样式
 class HtmlGenerator extends BaseGenerator {
   @override
   String get extension => 'html';

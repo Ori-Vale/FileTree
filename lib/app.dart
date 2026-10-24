@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'common/app_state.dart';
 import 'common/app_strings.dart';
-import 'orivale/orivale_visual.dart';
-import 'orivale/orivale_about.dart';
+import 'common/app_visual.dart';
+import 'common/about.dart';
 
 /// 应用根 Widget
 class FileTree extends StatelessWidget {
@@ -34,7 +34,7 @@ class MainWindow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: OriValeVisual.kBg,
+      backgroundColor: AppVisual.kBg,
       body: Stack(
         children: [
           const MainContentArea(),
@@ -65,7 +65,7 @@ class MainWindow extends StatelessWidget {
                   },
                   child: state.snackbarMessage == null
                       ? const SizedBox.shrink(key: ValueKey('empty'))
-                      : OriValeVisual.frostedFloatingBar(
+                      : AppVisual.frostedFloatingBar(
                           message: state.snackbarMessage!,
                           isError: state.isError,
                           onClear: () => state.clearMessage(),
@@ -99,7 +99,7 @@ class MainContentArea extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              OriValeVisual.frostedSectionTitle(
+              AppVisual.frostedSectionTitle(
                 AppStrings.appTitle,
                 icon: Icons.folder_rounded,
               ),
@@ -111,7 +111,7 @@ class MainContentArea extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Expanded(
-            child: OriValeVisual.frostedCard(
+            child: AppVisual.frostedCard(
               padding: const EdgeInsets.all(24),
               child: ClipRect(
                 child: Column(
@@ -126,7 +126,7 @@ class MainContentArea extends StatelessWidget {
                     Center(
                       child: SizedBox(
                         width: 320,
-                        child: OriValeVisual.frostedPrimaryButton(
+                        child: AppVisual.frostedPrimaryButton(
                           label: state.isScanning
                               ? AppStrings.scanInProgressButton
                               : AppStrings.buttonGenerate,
@@ -144,13 +144,13 @@ class MainContentArea extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Center(
-                      child: OriValeVisual.frostedMiniStat(
+                      child: AppVisual.frostedMiniStat(
                         folderText: state.inputDirectory == null
-                            ? "${AppStrings.statUnknown} 个文件夹"
+                            ? AppStrings.statUnknownFolders
                             : AppStrings.statFolders.replaceAll(
                                 '{count}', state.displayFolderCount.toString()),
                         fileText: state.inputDirectory == null
-                            ? "${AppStrings.statUnknown} 个文件"
+                            ? AppStrings.statUnknownFiles
                             : AppStrings.statFiles.replaceAll(
                                 '{count}', state.displayFileCount.toString()),
                       ),
@@ -170,7 +170,7 @@ class MainContentArea extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        OriValeVisual.frostedLabel(AppStrings.selectDirectoryTitle),
+        AppVisual.frostedLabel(AppStrings.selectDirectoryTitle),
         const SizedBox(height: 12),
         Row(
           children: [
@@ -178,16 +178,16 @@ class MainContentArea extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: OriValeVisual.kSurfaceAlt,
+                  color: AppVisual.kSurfaceAlt,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: OriValeVisual.kDivider),
+                  border: Border.all(color: AppVisual.kDivider),
                 ),
                 child: Text(
                   state.inputDirectory ?? AppStrings.noDirSelected,
                   style: TextStyle(
                     color: state.inputDirectory == null
-                        ? OriValeVisual.kTertiaryLabel
-                        : OriValeVisual.kLabel,
+                        ? AppVisual.kTertiaryLabel
+                        : AppVisual.kLabel,
                     fontSize: 14,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -195,7 +195,7 @@ class MainContentArea extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            OriValeVisual.frostedSecondaryButton(
+            AppVisual.frostedSecondaryButton(
               label: AppStrings.selectDirButton,
               icon: Icons.folder_open,
               onPressed: state.isScanning ? null : state.pickDirectory,
@@ -211,13 +211,13 @@ class MainContentArea extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        OriValeVisual.frostedLabel(AppStrings.outputFormatTitle),
+        AppVisual.frostedLabel(AppStrings.outputFormatTitle),
         const SizedBox(height: 12),
         Wrap(
           spacing: 10,
           runSpacing: 10,
           children: state.selectedFormats.keys.map((format) {
-            return OriValeVisual.frostedFormatTag(
+            return AppVisual.frostedFormatTag(
               label: format,
               isSelected: state.selectedFormats[format]!,
               onChanged: (_) => state.toggleFormat(format),
@@ -233,7 +233,7 @@ class MainContentArea extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        OriValeVisual.frostedLabel(AppStrings.selectOutputDirTitle),
+        AppVisual.frostedLabel(AppStrings.selectOutputDirTitle),
         const SizedBox(height: 12),
         Row(
           children: [
@@ -241,22 +241,21 @@ class MainContentArea extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: OriValeVisual.kSurfaceAlt,
+                  color: AppVisual.kSurfaceAlt,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: OriValeVisual.kDivider),
+                  border: Border.all(color: AppVisual.kDivider),
                 ),
                 child: Text(
                   state.outputDirectory.isEmpty
                       ? AppStrings.noDirSelected
                       : state.outputDirectory,
-                  style: const TextStyle(
-                      fontSize: 14, color: OriValeVisual.kLabel),
+                  style: const TextStyle(fontSize: 14, color: AppVisual.kLabel),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
             const SizedBox(width: 12),
-            OriValeVisual.frostedSecondaryButton(
+            AppVisual.frostedSecondaryButton(
               label: AppStrings.selectDirButton,
               icon: Icons.folder_open,
               onPressed: state.isScanning ? null : state.setOutputDirectory,

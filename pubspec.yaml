@@ -1,7 +1,7 @@
 name: filetree
 
 description: |
-  一款免费、开源的轻量化文件树生成工具。
+  一款轻量化文件树生成工具。
     
 publish_to: 'none'                    # 禁止发布到 pub.dev
 version: 1.0.1                        # 版本号

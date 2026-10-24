@@ -1,6 +1,6 @@
 # FileTree
 
-一款免费、开源的轻量化文件树生成工具。
+一款轻量化文件树生成工具。
 
 ## 功能特性
 
@@ -9,7 +9,7 @@
 - 📊 实时显示文件夹和文件统计
 - 💾 导出为多种格式：HTML、Markdown、Text
 - ⚡ 快速生成，支持大目录扫描
-- 🎨 精美的 Ori Vale 视觉风格 (类 Sequoia 和 Tahoe)
+- 🎨 简洁的 macOS 风格界面
 
 ## 截图
 
@@ -68,24 +68,8 @@ flutter build windows  # Windows
 - **框架：** Flutter 3.0+
 - **状态管理：** Provider
 - **语言：** Dart 3.0+
-- **设计：** Ori Vale 家族化视觉组件 (类 Sequoia 和 Tahoe)
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-1. Fork 本仓库
-2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 打开 Pull Request
+- **设计：** 轻量、简洁的 macOS 风格界面
 
 ## 许可证
 
 本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
-
-## 作者
-
-**Ori Vale**
-- GitHub: [@Ori-Vale](https://github.com/Ori-Vale)
-- Email: orivale@foxmail.com
